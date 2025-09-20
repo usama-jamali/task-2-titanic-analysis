@@ -1,0 +1,112 @@
+Titanic Dataset Analysis Report
+
+1. Data Overview
+
+The dataset contains 891 passenger records with demographic, travel, and
+survival information across 15 variables. Data types include numerical,
+categorical, and boolean values.
+
+------------------------------------------------------------------------
+
+2. Handling Missing Values
+
+-   Age: ~19.9% missing values. These were imputed to preserve important
+    information.
+-   Embarked / Embark_town: ~0.22% missing values. Kept embark_town
+    (town names) for better interpretability. Missing values were
+    imputed.
+-   Deck: Over 77% missing values. Dropped due to excessive missingness.
+
+------------------------------------------------------------------------
+
+3. Removing Redundant Columns
+
+To reduce duplication and improve clarity:
+- Dropped pclass (numeric) and kept class (categorical).
+- Dropped alive and kept survived as the primary outcome variable.
+- Dropped embarked and kept embark_town for readability.
+
+------------------------------------------------------------------------
+
+4. Data Distributions and Insights
+
+-   Gender: 577 males, 314 females. Males form the majority of
+    passengers.
+-   Class: 491 in Third, 216 in First, 184 in Second. Most traveled in
+    Third Class.
+-   Survival: 342 survived, 549 did not. Majority did not survive.
+-   Traveling Alone: 537 traveled alone, 354 traveled with companions.
+
+------------------------------------------------------------------------
+
+5. Descriptive Statistics of Numerical Variables
+
+-   Age: Mean ~29 years (range 0.42–80). Most passengers aged 22–35.
+-   SibSp: Most had no siblings/spouses aboard; max = 8.
+-   Parch: Most had no parents/children aboard; max = 6.
+-   Fare: Highly variable (0–512). Outliers are present but retained as
+    true values.
+
+------------------------------------------------------------------------
+
+6. Survival Analysis by Groups
+
+-   By Class:
+    -   First Class: 136 survived, 80 did not.
+    -   Second Class: 87 survived, 97 did not.
+    -   Third Class: 119 survived, 372 did not.
+        → Survival rate was highest in First Class, lowest in Third
+        Class.
+        → Represented with pie chart (percentages) and bar chart.
+-   By Gender:
+    -   Female: 233 survived, 81 did not.
+    -   Male: 109 survived, 468 did not.
+        → Females had a significantly higher survival rate.
+        → Represented with pie chart and bar chart.
+-   By Class & Gender:
+    -   First: 122 males, 94 females
+    -   Second: 108 males, 76 females
+    -   Third: 347 males, 144 females
+        → Males outnumbered females across all classes, with the largest
+        gap in Third Class.
+        → Shown with bar chart.
+-   By Class & Alone:
+    -   First: 109 alone, 107 not alone
+    -   Second: 104 alone, 80 not alone
+    -   Third: 324 alone, 167 not alone
+        → Most Third Class passengers traveled alone.
+        → Shown with bar chart.
+-   By Class & Embarkation Town:
+    -   First: Southampton (127), Cherbourg (85), Queenstown (2)
+    -   Second: Southampton (164), Cherbourg (17), Queenstown (3)
+    -   Third: Southampton (353), Queenstown (72), Cherbourg (66)
+        → Southampton was the dominant embarkation point across classes.
+        → Shown with bar chart.
+
+------------------------------------------------------------------------
+
+7. Correlation Analysis
+
+-   Strongest relationship: SibSp and Parch (0.41) → families often
+    traveled together.
+-   Weak positives: Fare vs. Parch (0.22), Fare vs. SibSp (0.16).
+-   Weak negatives: Age vs. SibSp (-0.23), Age vs. Parch (-0.17).
+-   Adult_male vs. Parch (-0.35): Adult males were less likely to travel
+    with children or parents.
+-   Overall, correlations are weak to moderate, indicating that no
+    single variable dominates survival prediction.
+    → Shown with correlation heatmap.
+
+------------------------------------------------------------------------
+
+8. Conclusion
+
+The analysis shows that class, gender, and family status significantly
+influenced survival chances. First Class passengers and females had a
+much higher chance of survival, while Third Class passengers and males
+were least likely to survive. The majority embarked from Southampton,
+and many Third Class passengers traveled alone.
+
+The dataset is now cleaned, redundant columns are removed, missing
+values are handled, and meaningful insights are supported by both
+statistical summaries and visualizations.
